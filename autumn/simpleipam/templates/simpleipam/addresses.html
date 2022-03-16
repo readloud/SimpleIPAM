@@ -1,0 +1,39 @@
+{% extends "simpleipam/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+	<div class="row">
+		<div class="container-fluid">
+			<div class="col-xs-12">
+				{# render_table addresses #}
+				
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Address</th>
+							<th>Used</th>
+							<th>state</th>
+							<th>Comments</th>
+						</tr>
+					</thead>
+					{% if addresses %}
+					{% for addr in addresses %}
+					<tr>
+						<td>{{addr.ip_address}}</td>
+						<td>{{addr.used}}</td>
+						<td>{{addr.state}}</td>
+						<td>{{addr.comments}}</td>
+					</tr>
+					{% endfor %}
+					{% endif %}
+				</table>
+				<ul class="pagination">
+					{% for page in pages %}
+				    <li><a href="#">{{page}}</a></li>
+				    {% endfor %}
+				</ul>
+				
+			</div>
+		</div> <!-- Container -->
+	</div>
+{% endblock %}
